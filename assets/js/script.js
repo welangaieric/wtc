@@ -701,6 +701,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Add loaded class for any CSS animations
   document.body.classList.add("loaded")
+  setupScrollToTop()
 })
 
 // Handle window resize
@@ -721,3 +722,22 @@ window.addEventListener("scroll", () => {
     header.classList.remove("sticky");
   }
 });
+// Scroll to top functionality
+function setupScrollToTop() {
+  const scrollToTopBtn = document.getElementById("scroll-to-top");
+
+  window.addEventListener("scroll", () => {
+    if (window.pageYOffset > 300) {
+      scrollToTopBtn.classList.add("show");
+    } else {
+      scrollToTopBtn.classList.remove("show");
+    }
+  });
+
+  scrollToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+}
