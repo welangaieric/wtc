@@ -58,12 +58,19 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap"
       rel="stylesheet"
     />
+    <!-- maps -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
     <!-- favicons  -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <!-- Schema.org Markup (JSON-LD for Organization) -->
+    <!-- Schema.org Markup  -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -552,6 +559,15 @@
         </div>
       </div>
     </section>
+    <section class="location-section">
+      <!-- location  -->
+  <div class="container">
+    <h2 class="location-title">Our Location</h2>
+    <div class="map-container" id="map">
+      <p>Map coming soon...</p>
+    </div>
+  </div>
+</section>
     <footer class="footer">
       <div class="container">
         <div class="footer-top">
@@ -586,5 +602,22 @@
     </footer>
 
     <script src="./assets/js/script.js"></script>
+ 
+    <script>
+        var map = L.map("map").setView(
+        [-1.2700142475454224, 36.81114159604481],
+        11
+      );
+      L.tileLayer(
+        "https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}@2x.png?key=DaBnG1NgYfwD2EOg5u09",
+        {
+          attribution:
+            '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+        }
+      ).addTo(map);
+      //langas
+      var marker = L.marker([-1.2700142475454224, 36.81114159604481]).addTo(map);
+      marker.bindPopup("Example, Westlands, Nairobi").openPopup();
+    </script>
   </body>
 </html>
